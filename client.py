@@ -2,13 +2,15 @@
 
 import socket
 
-HOST = '69.14.208.177'  # The server's hostname or IP address
+# The server's hostname or IP address
 PORT = 43768        # The port used by the server
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-s.connect((HOST, PORT))
-print("Connected to ser on port", PORT)
+host = input("Enter host to connect to\n>>> ")
+
+s.connect((host, PORT))
+print("Connected to server on port", PORT)
 response_data = s.recv(1024).decode()
 
 
