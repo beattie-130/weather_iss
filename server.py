@@ -5,10 +5,10 @@ from weather_iss import get_weather
 from weather_iss import get_ISS
 
 HOST = ''  # Standard loopback interface address (localhost)
-PORT = 65432
+PORT = 43768
 PROMPT = "[WEAT = weather] [ISS = ISS] [EXIT = close connection] [HELP = list of commands]"
 
-s = socket.socket()
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print("Socket created successfully")
 
 s.bind((HOST, PORT))

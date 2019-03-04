@@ -2,10 +2,10 @@
 
 import socket
 
-HOST = '127.0.0.1'  # The server's hostname or IP address
-PORT = 65432        # The port used by the server
+HOST = '127.0.1.1'  # The server's hostname or IP address
+PORT = 43768        # The port used by the server
 
-s = socket.socket()
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 s.connect((HOST, PORT))
 print("Connected to ser on port", PORT)
