@@ -4,7 +4,6 @@ import string
 from weather_iss import get_weather
 from weather_iss import get_ISS
 
-# Standard loopback interface address (localhost)
 HOST = socket.gethostbyname(socket.gethostname())
 PORT = 43768
 PROMPT = "[WEAT = weather] [ISS = ISS] [EXIT = close connection] [HELP = list of commands]"
