@@ -2,7 +2,7 @@
 
 import socket
 
-HOST = '127.0.1.1'  # The server's hostname or IP address
+HOST = '192.168.40.132'  # The server's hostname or IP address
 PORT = 43768        # The port used by the server
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

@@ -4,7 +4,8 @@ import string
 from weather_iss import get_weather
 from weather_iss import get_ISS
 
-HOST = ''  # Standard loopback interface address (localhost)
+# Standard loopback interface address (localhost)
+HOST = socket.gethostbyname(socket.gethostname())
 PORT = 43768
 PROMPT = "[WEAT = weather] [ISS = ISS] [EXIT = close connection] [HELP = list of commands]"
 
@@ -15,7 +16,7 @@ s.bind((HOST, PORT))
 
 # Allow the socket to backlog up to 5 connections
 s.listen(5)
-print("Socket listening on port ", PORT)
+print("Socket listening on " + HOST + " port " + str(PORT))
 
 conn, addr = s.accept()
 print("Connection established from ", addr)
