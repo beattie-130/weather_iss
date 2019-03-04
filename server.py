@@ -40,7 +40,7 @@ while True:
         except:
             result_msg = "ERROR while generating weather data\n"
     elif data == 'ISS':
-        instr_msg = "\nEnter an address, city & state, or ZIP Code for weather data"
+        instr_msg = "\nEnter an address, city & state, or ZIP Code for ISS data"
         conn.send(instr_msg.encode())
         location = conn.recv(1024).decode()
         try:
