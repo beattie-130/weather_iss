@@ -25,10 +25,11 @@ while True:
         break
 
     # Receive instructions from server for command entered
-    instr = s.recv(1024).decode()
-    print(instr)
-    user_input = input(">>>")
-    s.send(user_input.encode())
+    if(user_command == 'WEAT'):
+        instr = s.recv(1024).decode()
+        print(instr)
+        user_input = input(">>>")
+        s.send(user_input.encode())
 
     # Receive result from server
     response_data = s.recv(1024).decode()

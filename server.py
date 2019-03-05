@@ -24,7 +24,7 @@ conn.send(('Welcome to the weather server!\n' + PROMPT).encode())
 while True:
 
     data = conn.recv(1024).decode()
-    data.upper()
+    data = data.upper()
     result_msg = ""
     print("Recieved from client:\n", data)
     if (data == 'EXIT'):
@@ -40,12 +40,9 @@ while True:
         except:
             result_msg = "ERROR while generating weather data\n"
     elif data == 'ISS':
-        instr_msg = "\nEnter an address, city & state, or ZIP Code for ISS data"
-        conn.send(instr_msg.encode())
-        location = conn.recv(1024).decode()
         try:
-            result_msg = "get ISS called"
-            # get_ISS()
+            result_msg = get_ISS()['msg']
+            print("get ISS called")
         except:
             result_msg = "ERROR while generating ISS data\n"
     elif data == 'HELP':
@@ -57,6 +54,6 @@ while True:
 
 
 conn.close()
-print("Connection to client closed")
 s.close()
+print("Connection to client closed")
 print("Socket closed.\nGoodbye!")

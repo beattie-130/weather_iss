@@ -6,7 +6,7 @@ from datetime import datetime
 WEATHER_API_CALL = "https://api.darksky.net/forecast/fc995cf7fbe0051ca6cd68805dfc5783/"
 GEO_API_CALL = "http://open.mapquestapi.com/geocoding/v1/address?key=UhL8161KEFt4CGekeRCeYoBDQSd0t6GF&location="
 REVERSE_GEO_API_CALL = "http://www.mapquestapi.com/geocoding/v1/reverse?key=UhL8161KEFt4CGekeRCeYoBDQSd0t6GF&location="
-ISS_API_CALL = "http://api.open-notify.org/iss-pass.json?"  # + "lat=LAT&lon=LON"
+ISS_API_CALL = "https://api.wheretheiss.at/v1/satellites/25544"
 
 
 def get_weather(location):
@@ -42,37 +42,23 @@ def get_weather(location):
 
 
 def get_ISS():
-    location = input(
-        "\nEnter an address, city & state, or ZIP Code for International Space Station data\n>>> ")
+    iss_data = (requests.get(ISS_API_CALL)).json()
 
-    # Get latitude and longitude
-    coord = get_lat_lng(location)
+    print("in get_ISS")
 
-    local_iss_api_call = ISS_API_CALL + "lat=" + \
-        str(coord["lat"]) + "&lon=" + str(coord["lng"])
+    local = get_location(iss_data['latitude'], iss_data['longitude'])
+    msg = "The ISS is located at\t " + "lat: " + str(iss_data['latitude']) + " lng: " + str(
+        iss_data['longitude']) + " " + str(local['city']) + ", " + str(local['country'])
 
-    iss_data = (requests.get(local_iss_api_call)).json()
+    print(msg)
 
-    print(iss_data)
+    result = {
+        'msg': msg,
+        'lat': iss_data['latitude'],
+        'lng': iss_data['longitude']
+    }
 
-    if(len(coord['city']) == 0):
-        print("\nISS over\t" + coord["state"])
-    else:
-        print("\nISS over\t" + coord["city"] + ", " +
-              coord["state"])
-
-    print("----------------------------------------")
-    for response in iss_data['response']:
-        risetime = response['risetime']
-        duration = response['duration']
-
-        print("Risetime\t" + str(datetime.utcfromtimestamp(risetime).strftime('%c')))
-        print("Settime\t\t" +
-              str(datetime.utcfromtimestamp(risetime+duration).strftime('%c')))
-        print("----------------------------------------")
-    print("\n")
-
-    return
+    return result
 
 
 def get_lat_lng(location):
@@ -98,3 +84,23 @@ def get_lat_lng(location):
 
     # Return a dictionary of the lat, lng, city, state
     return {"lat": lat, "lng": lng, "state": state, "city": city}
+
+
+def get_location(lat, lng):
+    location_api_call = REVERSE_GEO_API_CALL + str(lat) + ","+str(lng)
+    geo_data = (requests.get(location_api_call)).json()
+
+    city = ""
+    country = ""
+
+    city = geo_data['results'][0]['locations'][0]['adminArea5']
+    if (len(city) == 0):
+        city = geo_data['results'][0]['locations'][0]['adminArea4']
+        country = geo_data['results'][0]['locations'][0]['adminArea1']
+
+    local = {
+        'city': city,
+        'country': country
+    }
+
+    return local
