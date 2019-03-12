@@ -6,7 +6,7 @@ from weather_iss import get_ISS
 
 HOST = socket.gethostbyname(socket.gethostname())
 PORT = 43768
-PROMPT = "[WEAT = weather] [ISS = ISS] [EXIT = close connection] [HELP = list of commands]"
+PROMPT = "[WEAT] [SUMM] = current weather information\n[WEAT] [3DAY] = 3 day forecast\n[ISS] = ISS Location (lat,lng)\n[EXIT] = close connection\n[HELP] = list of commands"
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print("Socket created successfully")
@@ -30,13 +30,13 @@ while True:
     if (data == 'EXIT'):
         result_msg = "Closing connection to client..."
         break
-    elif data == 'WEAT':
+    elif data[0:4] == 'WEAT':
         instr_msg = "\nEnter an address, city & state, or ZIP Code for weather data"
         conn.send(instr_msg.encode())
         location = conn.recv(1024).decode()
         try:
             print("get weather called")
-            result_msg = get_weather(location)
+            result_msg = get_weather(data[5:9], location)
         except:
             result_msg = "ERROR while generating weather data\n"
     elif data == 'ISS':
@@ -51,7 +51,6 @@ while True:
         result_msg = "INVALID COMMAND"
 
     conn.send(result_msg.encode())
-
 
 conn.close()
 s.close()
