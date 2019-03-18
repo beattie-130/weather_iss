@@ -2,6 +2,20 @@
 
 A Python application designed to demonstrate understadning of socket programming techniques.
 
+## Technical Requirements
+Python Version 3.7
+To install:
+```
+$ sudo apt update
+$ sudo apt install software-properties-common
+
+$ sudo add-apt-repository ppa:deadsnakes/ppa
+
+$ sudo apt install python3.7
+
+$ python 3.7 --version
+```
+
 1. Get the project with `git clone https://github.com/beattie-130/cse3461Project.git`.
 
 2. Run the server with `./server.py`.
