@@ -12,6 +12,6 @@ A Python application designed to demonstrate understadning of socket programming
 
 5. Enter the address outputted by the server into the client.
 
-6. Follow on screen options
+6. Follow on screen instructions on the client application.
 
 Type `HELP` into the client application to see a list of commands.
