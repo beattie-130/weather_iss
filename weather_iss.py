@@ -109,11 +109,11 @@ def get_ISS():
 
     local = get_location(iss_lat, iss_lng)
 
-    msg = ("==================================================\n")
+    msg = ("============================================================\n")
 
     # If the country returns as "XZ" then the ISS is not over a specific country
     if(local['country'] == "XZ"):
-        msg = "The ISS is located at " + "lat: " + str(iss_lat) + " lng: " + str(
+        msg += "The ISS is located at " + "lat: " + str(iss_lat) + " lng: " + str(
             iss_lng) + "\t over the ocean"
     else:
         # Get the country name from the two letter country code
@@ -124,7 +124,7 @@ def get_ISS():
         msg += "The ISS is located at " + "lat: " + str(iss_lat) + " lng: " + str(
             iss_lng) + "\nOver Country:\t" + str(country)
 
-    msg += ("\n==================================================\n")
+    msg += ("\n============================================================\n")
 
     result = {
         'msg': msg,
