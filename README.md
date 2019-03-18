@@ -15,7 +15,7 @@ $ sudo apt install python3.7
 
 $ python 3.7 --version
 ```
-
+## Run the project
 1. Get the project with `git clone https://github.com/beattie-130/cse3461Project.git`.
 
 2. Run the server with `./server.py`.
