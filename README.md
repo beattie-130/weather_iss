@@ -1,6 +1,6 @@
 # CSE 3461 Client - Server Application
 
-A Python application designed to demonstrate understadning of socket programming techniques.
+A Python application designed to demonstrate understadning of socket programming techniques.  
 
 ## Technical Requirements
 * Python Version 3.7
@@ -32,3 +32,8 @@ $ python 3.7 --version
 6. Follow on screen instructions on the client application.
 
 7. Type `HELP` into the client application to see a list of commands.
+
+## Contact Info
+**Brien Beattie**  
+*school email*: **beattie.55@osu.edu**  
+*personal email*: **beattiebrien130@gmail.com**
