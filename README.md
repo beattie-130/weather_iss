@@ -2,7 +2,7 @@
 
 A Python application designed to demonstrate understadning of socket programming techniques.
 
-1. Get the project with `git clone`.
+1. Get the project with `git clone https://github.com/beattie-130/cse3461Project.git`.
 
 2. Run the server with `./server.py`.
 
