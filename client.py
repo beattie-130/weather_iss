@@ -21,7 +21,7 @@ while True:
         print("Closing connection to server...")
         break
 
-    # Receive instructions from server for command entered
+    # Receive instructions from server for command entered if command was "WEAT"
     if(user_command[0:4] == 'WEAT'):
         instr = s.recv(1024).decode()
         print(instr)

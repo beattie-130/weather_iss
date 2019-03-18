@@ -4,6 +4,7 @@ import requests
 import pytz
 from datetime import datetime
 
+# Declare constants for API calls
 WEATHER_API_CALL = "https://api.darksky.net/forecast/fc995cf7fbe0051ca6cd68805dfc5783/"
 GEO_API_CALL = "http://open.mapquestapi.com/geocoding/v1/address?key=UhL8161KEFt4CGekeRCeYoBDQSd0t6GF&location="
 REVERSE_GEO_API_CALL = "http://www.mapquestapi.com/geocoding/v1/reverse?key=UhL8161KEFt4CGekeRCeYoBDQSd0t6GF&location="
